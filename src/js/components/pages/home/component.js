@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import template from './jsx'
 
-export class Router extends React.Component {
+export class Home extends React.Component {
     render() {
         return template(this);
     }
@@ -16,9 +16,9 @@ const mapDispatchToProps = dispatch => ({
 
 })
 
-const RouterContainer = connect(
+const HomeContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Router)
+)(Home)
 
-export default RouterContainer
+export default HomeContainer

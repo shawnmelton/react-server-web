@@ -1,5 +1,6 @@
 import appService from './src/js/services/app'
 import express from 'express'
+import { Helmet } from 'react-helmet'
 import { Provider } from 'react-redux'
 import React from 'react'
 import reducer from './src/js/redux/reducer'
@@ -17,12 +18,16 @@ const handleRender = (req, res) => {
         </Provider>
     )
 
+    const helmet = Helmet.renderStatic()
     const preloadedState = store.getState()
 
     templateService
         .render('index.html', {
             html: html,
-            preloadedState: JSON.stringify(preloadedState).replace(/</g, '\\u003c')
+            links: helmet.link.toString(),
+            meta: helmet.meta.toString(),
+            preloadedState: JSON.stringify(preloadedState).replace(/</g, '\\u003c'),
+            title: helmet.title.toString()
         }, content => {
             res.send(content)
         })

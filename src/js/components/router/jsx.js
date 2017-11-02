@@ -1,8 +1,9 @@
-import Layout from '../layout/component'
+import Home from '../pages/home/component'
+import React from 'react'
 
 const template = (component) => {
     return (
-        <Layout />
+        <Home />
     )
 }
 
