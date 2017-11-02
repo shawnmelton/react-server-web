@@ -1,8 +1,8 @@
-import React from 'react'
+import Layout from '../layout/component'
 
 const template = (component) => {
     return (
-        <div>{ component.props.children }</div>
+        <Layout />
     )
 }
 

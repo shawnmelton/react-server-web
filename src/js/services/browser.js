@@ -1,6 +1,8 @@
 import createHistory from 'history/createBrowserHistory'
 import logger from './logger'
-import { ROUTES } from '../constants/routes'
+import ROUTES from '../constants/routes'
+import store from '../redux/store'
+import { UPDATE_ROUTE } from '../constants/actionTypes'
 
 class Browser {
     constructor() {
@@ -19,22 +21,22 @@ class Browser {
                 push: (url) => {}
             }
         }
-
-        this._url = null
     }
 
-    _setUrl(url) {
-        this._url = url
-    }
-
-    navigate(url) {
+    navigate(route, url) {
         logger.log('Browser', 'Navigating to '+ url)
 
-        this._setUrl(url)
+        store.dispatch(reduxUpdateRoute(route))
         this._history.push(url)
     }
 }
 
 const browser = new Browser()
-
 export default browser
+
+const reduxUpdateRoute = route => {
+    return {
+        type: UPDATE_ROUTE,
+        route: route
+    }
+}
