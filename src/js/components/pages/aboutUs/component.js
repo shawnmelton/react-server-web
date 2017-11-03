@@ -4,10 +4,10 @@ import React from 'react'
 import ROUTES from '../../../constants/routes'
 import template from './jsx'
 
-export class Home extends React.Component {
+export class AboutUs extends React.Component {
     onButtonClick(e) {
         e.preventDefault()
-        browser.navigate(ROUTES.ABOUT_US, '/about-us')
+        browser.navigate(ROUTES.HOME, '/')
     }
 
     render() {
@@ -19,9 +19,9 @@ const mapStateToProps = state => ({})
 
 const mapDispatchToProps = dispatch => ({})
 
-const HomeContainer = connect(
+const AboutUsContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Home)
+)(AboutUs)
 
-export default HomeContainer
+export default AboutUsContainer

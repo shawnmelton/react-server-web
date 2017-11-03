@@ -9,12 +9,10 @@ export class Router extends React.Component {
 }
 
 const mapStateToProps = state => ({
-
+    currentRoute: state.routes.current
 })
 
-const mapDispatchToProps = dispatch => ({
-
-})
+const mapDispatchToProps = dispatch => ({})
 
 const RouterContainer = connect(
     mapStateToProps,

@@ -9,6 +9,7 @@ const template = (component) => {
                 <link rel="canonical" href="https://www.example.com" />
             </Helmet>
             <h1>Home Page Found</h1>
+            <button onClick={(e) => { component.onButtonClick(e) }}>Go to About Us</button>
         </div>
     )
 }

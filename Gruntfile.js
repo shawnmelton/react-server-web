@@ -5,7 +5,7 @@ module.exports = ((grunt) => {
         babel: {
             options: {
                 sourceMap: false,
-                minified: true,
+                minified: false,
                 presets: ['env', 'react', 'stage-2']
             },
             dist: {
@@ -24,12 +24,12 @@ module.exports = ((grunt) => {
         },
         browserify: {
             dist: {
-                src: ['tmp/js/app.js'],
+                src: ['tmp/js/client.js'],
                 dest: 'dist/js/compiled.js',
                 options: {
                     browserifyOptions: { debug: false },
                     plugin: [
-                       ['minifyify', { map: false }]
+                       /*['minifyify', { map: false }]*/
                     ]
                 }
             }

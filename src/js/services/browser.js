@@ -29,6 +29,22 @@ class Browser {
         store.dispatch(reduxUpdateRoute(route))
         this._history.push(url)
     }
+
+    setRoute(urlPath = null) {
+        const url = urlPath === null ? location.pathname : urlPath
+        let currentRoute = null
+        for (let route in ROUTES) {
+            if (ROUTES[route].regex.test(url) && currentRoute === null) {
+                currentRoute = ROUTES[route]
+            }
+        }
+
+        if (currentRoute === null) {
+            currentRoute = ROUTES.NOT_FOUND
+        }
+
+        store.dispatch(reduxUpdateRoute(currentRoute))
+    }
 }
 
 const browser = new Browser()

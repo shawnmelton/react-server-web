@@ -1,4 +1,5 @@
 import appService from './src/js/services/app'
+import browser from './src/js/services/browser'
 import express from 'express'
 import { Helmet } from 'react-helmet'
 import { Provider } from 'react-redux'
@@ -10,7 +11,11 @@ import store from './src/js/redux/store'
 import templateService from './src/js/services/template'
 
 const handleRender = (req, res) => {
+    if (req.url === '/favicon.ico')
+        return
+
     appService.setServerRenderer()
+    browser.setRoute(req.url)
 
     const html = renderToString(
         <Provider store={store}>
